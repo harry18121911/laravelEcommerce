@@ -69,11 +69,17 @@
                     <table class="table_deg">
                         <tr>
                             <th>Category Name</th>
+                            <th></th>
                         </tr>
 
-                        @foreach ($data as $datas)
+                        @foreach ($category as $category)
                             <tr>
-                                <td>{{$datas->category_name}}</td>
+                                <td>{{$category->category_name}}</td>
+                                <form action="{{url("delete_category",$category->id)}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                                </form>
                             </tr>
                         @endforeach
 
