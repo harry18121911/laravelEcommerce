@@ -75,10 +75,10 @@
                         @foreach ($category as $category)
                             <tr>
                                 <td>{{$category->category_name}}</td>
-                                <form action="{{url("delete_category",$category->id)}}" method="POST">
+                                <form id="form" action="{{url("delete_category",$category->id)}}" method="POST">
                                     @csrf
                                     @method("DELETE")
-                                <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                                <td><button type="submit" href="{{url("delete_category",$category->id)}}" class="btn btn-danger" onclick="confirmation(event)">Delete</button></td>
                                 </form>
                             </tr>
                         @endforeach
@@ -86,6 +86,34 @@
                     </table>
                 </div>
                 <!-- JavaScript files-->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    function confirmation(ev){
+                        ev.preventDefault();
+                        var urlToRedirect = ev.currentTarget.getAttribute("href");
+
+                        Swal.fire({
+                            title:"Are you sure to delete this",
+                            text: "This delete will be permanent",
+                            icon: "warning",
+                            showCloseButton: true,
+                            showCancelButton: true,
+                            focusConfirm: false,
+                        }).then((result)=>{
+                             if(result.isConfirmed){
+                                let form =document.getElementById("form");
+                                form.submit();
+                                Swal.fire("Category Deleted");
+                             }else if(result.isDenied){
+
+                                Swal.fire("Changes are not saved");
+                             }
+
+                        })
+                    }
+
+
+                </script>
                 <script src="{{ asset('/admincss/vendor/jquery/jquery.min.js') }}"></script>
                 <script src="{{ asset('/admincss/vendor/popper.js/umd/popper.min.js') }}"></script>
                 <script src="{{ asset('/admincss/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
