@@ -7,15 +7,18 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function view_category(){
-        return view("admin.category");
+    public function view_category()
+    {
+        $data = Category::all();
+        return view("admin.category", compact("data"));
     }
 
-    public function add_category(Request $request){
+    public function add_category(Request $request)
+    {
 
         $category = new Category;
 
-        $category->category_name= $request->category;
+        $category->category_name = $request->category;
 
         $category->save();
 
