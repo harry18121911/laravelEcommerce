@@ -31,3 +31,9 @@ Route::post("add_category",[AdminController::class,"add_category"])->
 
 Route::delete("delete_category/{id}",[AdminController::class,"delete_category"])->
     middleware(["auth","admin"]);
+
+Route::get("edit_category/{id}",[AdminController::class,"edit_view"])->
+    middleware(["auth","admin"]);
+
+Route::put("update_category/{id}",[AdminController::class,"update_category"])->
+    middleware(["auth","admin"]);

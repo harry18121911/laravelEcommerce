@@ -69,17 +69,23 @@
                     <table class="table_deg">
                         <tr>
                             <th>Category Name</th>
-                            <th></th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
 
                         @foreach ($category as $category)
                             <tr>
                                 <td>{{$category->category_name}}</td>
-                                <form id="form" action="{{url("delete_category",$category->id)}}" method="POST">
+                                <form id="formUpdate" action="{{url("edit_category",$category->id)}}" method="GET">
+                                    @csrf
+                                <td><button type="submit"  class="btn btn-success" >Edit</button></td>
+                                </form>
+                                <form id="formDelete" action="{{url("delete_category",$category->id)}}" method="POST">
                                     @csrf
                                     @method("DELETE")
                                 <td><button type="submit" href="{{url("delete_category",$category->id)}}" class="btn btn-danger" onclick="confirmation(event)">Delete</button></td>
                                 </form>
+
                             </tr>
                         @endforeach
 
@@ -101,7 +107,7 @@
                             focusConfirm: false,
                         }).then((result)=>{
                              if(result.isConfirmed){
-                                let form =document.getElementById("form");
+                                let form =document.getElementById("formDelete");
                                 form.submit();
                                 Swal.fire("Category Deleted");
                              }else if(result.isDenied){

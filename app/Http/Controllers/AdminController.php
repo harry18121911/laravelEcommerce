@@ -35,4 +35,18 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit_view($id){
+        $category = Category::find($id);
+        return view("admin.edit",compact("category"));
+    }
+
+    public function update_category(Request $request, $id){
+        $category = Category::find($id);
+        $category->category_name= $request -> category;
+        $category ->save();
+        toastr()->closeButton()->timeOut(5000)->addSuccess("Category Updated Successfully");
+        return redirect("/view_category");
+
+    }
 }
