@@ -14,15 +14,15 @@
 
             <li><a href="{{url("view_category")}}"> <i class="icon-grid"></i>Category </a></li>
 
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
-
+            <li>
+                <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse">
+                <i class="icon-windows">
+                   </i>Products
+                </a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled">
+                    <li><a href="{{url("add_product")}}">Add Product</a></li>
+                    <li><a href="">TODO</a></li>
+                    <li><a href="">TODO</a></li>
+                </ul>
             </li>
-
-            <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
-    </ul><span class="heading">Extras</span>
-    <ul class="list-unstyled">
-      <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>
-      <li> <a href="#"> <i class="icon-writing-whiteboard"></i>Demo </a></li>
-      <li> <a href="#"> <i class="icon-chart"></i>Demo </a></li>
-    </ul>
 </nav>
