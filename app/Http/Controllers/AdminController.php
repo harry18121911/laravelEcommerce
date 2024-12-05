@@ -81,4 +81,26 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function view_product(){
+        $product = Product::paginate(1);
+        return view("admin.view_product", compact("product"));
+    }
+
+    public function delete_product($id){
+
+
+        $product = Product::find($id);
+        $image_path = public_path("products/" . $product->image);
+
+        if(file_exists($image_path))
+        {
+            unlink($image_path);
+        }
+
+        $product->delete();
+        toastr()->closeButton()->timeOut(5000)->addSuccess("Category Deleted Successfully");
+        return redirect()->back();
+    }
+
 }

@@ -25,6 +25,17 @@
             width: 600px;
         }
 
+        h1 {
+            color: white;
+        }
+
+        label {
+            display: inline-block;
+            width: 250px;
+            font-size: 18px !important;
+            color: white !important;
+        }
+
         th {
             background-color: skyblue;
             padding: 15px;
@@ -37,6 +48,20 @@
             color: white;
             padding: 10px;
             border: 1px solid;
+        }
+
+        input[type="text"] {
+            width: 350px;
+            height: 50px;
+        }
+
+        textarea {
+            width: 450px;
+            height: 80px;
+        }
+
+        .input_deg {
+            padding: 15px;
         }
     </style>
 </head>
@@ -52,7 +77,44 @@
             <div class="page-header">
                 <div class="container-fluid">
                 </div>
-                <h1 style="color: white">Add Category</h1>
+
+                <div class="div_deg">
+                    <table class="table_deg">
+                        <tr>
+                            <th>Product Title</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Delete</th>
+                        </tr>
+
+                        @foreach ($product as $products)
+                            <tr>
+                                <td>{{ $products->title }}</td>
+                                <td>{{ $products->description }}</td>
+                                <td>{{ $products->category }}</td>
+                                <td> <img height="120" width="120" src="products/{{ $products->image }}"> </td>
+                                <td>{{ "$" . $products->price }}</td>
+                                <td>{{ $products->quantity }}</td>
+
+                                <td>
+                                    <form id="formDelete" action="{{url("delete_product",$products->id)}}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                    <button type="submit" href="" class="btn btn-danger" onclick="confirmation(event)">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                    </table>
+
+
+                </div>
+                {{ $product->links() }}
+                {{--  <h1 style="color: white">Add Category</h1>
                 <div class="div_deg">
 
                     <form action="{{ url('add_category') }}" method="post">
@@ -63,9 +125,9 @@
                         </div>
                     </form>
 
-                </div>
+                </div> --}}
 
-                <div>
+                {{-- <div>
                     <table class="table_deg">
                         <tr>
                             <th>Category Name</th>
@@ -90,7 +152,7 @@
                         @endforeach
 
                     </table>
-                </div>
+                </div> --}}
                 <!-- JavaScript files-->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
@@ -107,9 +169,8 @@
                              if(result.isConfirmed){
                                 let form =document.getElementById("formDelete");
                                 form.submit();
-                                Swal.fire("Category Deleted");
+                                Swal.fire("Product Deleted");
                              }else if(result.isDenied){
-
                                 Swal.fire("Changes are not saved");
                              }
 
