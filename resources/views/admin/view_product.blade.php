@@ -87,6 +87,7 @@
                             <th>Image</th>
                             <th>Price</th>
                             <th>Quantity</th>
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
 
@@ -100,10 +101,20 @@
                                 <td>{{ $products->quantity }}</td>
 
                                 <td>
-                                    <form id="formDelete" action="{{url("delete_product",$products->id)}}" method="POST">
+                                    <form id="formUpdate" action="{{ url('edit_product', $products->id) }}"
+                                        method="GET">
                                         @csrf
-                                        @method("DELETE")
-                                    <button type="submit" href="" class="btn btn-danger" onclick="confirmation(event)">Delete</button>
+                                        <button type="submit" href="" class="btn btn-secondary">Edit</button>
+                                    </form>
+                                </td>
+
+                                <td>
+                                    <form id="formDelete" action="{{ url('delete_product', $products->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" href="" class="btn btn-danger"
+                                            onclick="confirmation(event)">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -156,28 +167,26 @@
                 <!-- JavaScript files-->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
-                    function confirmation(ev){
+                    function confirmation(ev) {
                         ev.preventDefault();
                         Swal.fire({
-                            title:"Are you sure to delete this",
+                            title: "Are you sure to delete this",
                             text: "This delete will be permanent",
                             icon: "warning",
                             showCloseButton: true,
                             showCancelButton: true,
                             focusConfirm: false,
-                        }).then((result)=>{
-                             if(result.isConfirmed){
-                                let form =document.getElementById("formDelete");
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let form = document.getElementById("formDelete");
                                 form.submit();
                                 Swal.fire("Product Deleted");
-                             }else if(result.isDenied){
+                            } else if (result.isDenied) {
                                 Swal.fire("Changes are not saved");
-                             }
+                            }
 
                         })
                     }
-
-
                 </script>
                 <script src="{{ asset('/admincss/vendor/jquery/jquery.min.js') }}"></script>
                 <script src="{{ asset('/admincss/vendor/popper.js/umd/popper.min.js') }}"></script>
