@@ -25,10 +25,8 @@
                                 </span>
                             </h6>
                         </div>
-                        <div class="new">
-                            <span>
-                                New
-                            </span>
+                        <div style="padding:15px">
+                            <a class="btn btn-danger" href="{{url("product_details",$products->id)}}">Details</a>
                         </div>
                     </a>
                 </div>

@@ -69,4 +69,6 @@
         </div>
       </div>
     </div>
+
+    @include("home.footer")
 </section>
