@@ -55,6 +55,12 @@
             height: 50px;
         }
 
+        input[type="search"]{
+            width: 500px;
+            height: 60px;
+            margin-left: 50px;
+        }
+
         textarea {
             width: 450px;
             height: 80px;
@@ -78,6 +84,10 @@
                 <div class="container-fluid">
                 </div>
 
+                    <form action="{{url("product_search")}}" method="get">
+                        <input type="search" name="search">
+                        <input type="submit" name="btn btn-secondary" value="Search">
+                    </form>
                 <div class="div_deg">
                     <table class="table_deg">
                         <tr>
