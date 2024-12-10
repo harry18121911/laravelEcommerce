@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -30,5 +33,21 @@ class HomeController extends Controller
         $product= Product::find($id);
 
         return view("home.product_details",compact("product"));
+    }
+
+    public function add_cart($id){
+        $product_id= $id;
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $cart = new Cart;
+
+        $cart ->user_id = $user_id;
+        $cart->product_id = $product_id;
+        $cart->save();
+
+        toastr()->timeOut(10000)->closeButton()->addSuccess("Product Added to the Cart Successfully");
+
+        return redirect()->back();
     }
 }
