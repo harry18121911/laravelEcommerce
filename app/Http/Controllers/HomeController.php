@@ -19,30 +19,67 @@ class HomeController extends Controller
     {
         $product = Product::all();
 
-        return view("home.index", compact("product"));
+        if (Auth::id()) {
+            $user = Auth::user();
+
+            $userid = $user->id;
+
+            $count = Cart::where("user_id", $userid)->count();
+        } else {
+            $count = "";
+        }
+
+
+
+
+        return view("home.index", compact("product", "count"));
     }
 
     public function login_home()
     {
         $product = Product::all();
 
-        return view("home.index", compact("product"));
+        if (Auth::id()) {
+            $user = Auth::user();
+
+            $userid = $user->id;
+
+            $count = Cart::where('user_id', $userid)->count();
+        }
+
+
+        return view("home.index", compact("product", "count"));
     }
 
-    public function product_details($id) {
-        $product= Product::find($id);
+    public function product_details($id)
+    {
+        $product = Product::find($id);
 
-        return view("home.product_details",compact("product"));
+        if (Auth::id()) {
+
+            $user = Auth::user();
+
+            $userid = $user->id;
+
+            $count = Cart::where("user_id", $userid)->count();
+        } else {
+            $count = "";
+        }
+
+
+
+        return view("home.product_details", compact("product", "count"));
     }
 
-    public function add_cart($id){
-        $product_id= $id;
+    public function add_cart($id)
+    {
+        $product_id = $id;
         $user = Auth::user();
         $user_id = $user->id;
 
         $cart = new Cart;
 
-        $cart ->user_id = $user_id;
+        $cart->user_id = $user_id;
         $cart->product_id = $product_id;
         $cart->save();
 
