@@ -37,6 +37,16 @@
         border: 1px solid skyblue;
     }
 
+    .order_deg{
+        padding-right: 100px;
+        margin-top: -50;
+    }
+
+    label{
+        display: inline-block;
+        width: 150px;
+    }
+
  </style>
 </head>
 
@@ -47,6 +57,33 @@
   </div>
 
    <div class="div_deg">
+
+    <div class="order_deg">
+        <form action="{{url("confirm_order")}}" method="POST">
+            @csrf
+            <div class="div_gap">
+                <label for="">Receiver Name</label>
+                <input type="text" name="name" value="{{Auth::user()->name}}">
+            </div>
+
+            <div class="div_gap">
+                <label for="">Receiver Adress</label>
+                <textarea name="address">{{Auth::user()->address}}</textarea>
+            </div>
+
+            <div class="div_gap">
+                <label for="">Receiver Phone</label>
+                <input type="text" name="phone" value="{{Auth::user()->phone}}">
+            </div>
+
+            <div class="div_gap">
+                <button class="btn btn-primary" type="submit" >Place Order</button>
+            </div>
+
+        </form>
+    </div>
+
+
     <table>
         <tr>
             <th>Product Title</th>
