@@ -71,6 +71,10 @@ Route::delete("delete_cart/{id}",[HomeController::class,"delete_cart"])->
 Route::post("confirm_order",[HomeController::class,"confirm_order"])->
     middleware(["auth","verified"]);
 
+Route::get("view_order",[AdminController::class,"view_order"])->
+    middleware(["auth","verified"]);
+
+
 
 
 
