@@ -74,7 +74,11 @@ Route::post("confirm_order",[HomeController::class,"confirm_order"])->
 Route::get("view_order",[AdminController::class,"view_order"])->
     middleware(["auth","verified"]);
 
+Route::post("on_the_way/{id}",[AdminController::class,"on_the_way"])->
+    middleware(["auth","verified"]);
 
+Route::post("delivered/{id}",[AdminController::class,"delivered"])->
+    middleware(["auth","verified"]);
 
 
 
