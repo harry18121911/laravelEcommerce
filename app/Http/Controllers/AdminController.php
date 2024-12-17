@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -178,5 +179,12 @@ class AdminController extends Controller
         $order->status="Delivered";
         $order->save();
         return redirect("/view_order");
+    }
+
+    public function print_pdf($id){
+        $data = Order::find($id);
+        $pdf = Pdf::loadView("admin.invoice", compact("data"));
+        return $pdf->download("invoice.pdf");
+
     }
 }

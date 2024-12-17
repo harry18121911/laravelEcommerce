@@ -80,6 +80,9 @@ Route::post("on_the_way/{id}",[AdminController::class,"on_the_way"])->
 Route::post("delivered/{id}",[AdminController::class,"delivered"])->
     middleware(["auth","verified"]);
 
+Route::post("print_pdf/{id}",[AdminController::class,"print_pdf"])->
+    middleware(["auth","verified"]);
+
 
 
 

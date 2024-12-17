@@ -21,13 +21,22 @@
         td {
             color: white;
             padding: 10px;
-            border: 2px solid skyblue
+            border: 2px solid skyblue;
         }
 
         .table_center {
             display: flex;
             justify-content: center;
             align-self: center;
+        }
+
+        .status_button{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .form_status{
+            margin-right:5px;
         }
     </style>
 </head>
@@ -55,6 +64,7 @@
                                 <th>Image</th>
                                 <th>Status</th>
                                 <th>Change Status</th>
+                                <th>Print PDF</th>
                             </tr>
 
                             @foreach ($data as $data)
@@ -69,8 +79,9 @@
                                     </td>
                                     <td>{{ $data->status }}</td>
 
-                                    <td>
-                                        <form action="{{url('on_the_way', $data->id) }}" method="POST">
+                                    <td >
+                                        <div class="status_button">
+                                        <form class="form_status" action="{{url('on_the_way', $data->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-primary" href="">On the way.</button>
                                         </form>
@@ -78,7 +89,15 @@
                                             @csrf
                                             <button type="submit" class="btn btn-success" href="">Delivered</button>
                                         </form>
+                                        </div>
                                     </td>
+                                    <td>
+                                        <form action="{{url("print_pdf",$data->id)}}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-secondary" href="">Print PDF</button>
+                                        </form>
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </table>
