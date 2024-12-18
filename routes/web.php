@@ -10,6 +10,10 @@ Route::get("/",[HomeController::class,"home"]);
 
 Route::get('/dashboard',[HomeController::class,"login_home"])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get("/myorders",[HomeController::class,"myorders"])->
+    middleware(["auth","verified"]);
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -82,6 +86,7 @@ Route::post("delivered/{id}",[AdminController::class,"delivered"])->
 
 Route::post("print_pdf/{id}",[AdminController::class,"print_pdf"])->
     middleware(["auth","verified"]);
+
 
 
 

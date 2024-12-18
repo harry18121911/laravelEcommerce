@@ -152,4 +152,16 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+    public function myorders(){
+        if(Auth::id()){
+            $user= Auth::user();
+            $userid = $user->id;
+            $count = Cart::where("user_id",$userid)->count();
+            $order= Order::where("user_id",$userid)->get();
+            $cart = Cart::where("user_id", $userid)->get();
+        }
+
+        return view("home.orders",compact("count","cart","order"));
+    }
 }
