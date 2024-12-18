@@ -77,7 +77,15 @@
                                     <td>
                                         <img width="150" src="products/{{ $data->product->image }}" alt="">
                                     </td>
-                                    <td>{{ $data->status }}</td>
+                                    <td>
+                                        @if ($data->status=="in progress")
+                                            <span style="color:red">{{$data->status}}</span>
+                                        @elseif($data->status=="Delivered")
+                                            <span style="color:green">{{$data->status}}</span>
+                                        @elseif($data->status=="On the way")
+                                            <span style="color:yellow">{{$data->status}}</span>
+                                         @endif
+                                    </td>
 
                                     <td >
                                         <div class="status_button">
