@@ -4,8 +4,9 @@
 <head>
  @include("home.css")
 </head>
-
+@vite('resources/css/app.css')
 <body>
+
   <div class="hero_area">
     <!-- header section strats -->
    @include("home.header")

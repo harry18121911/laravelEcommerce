@@ -1,3 +1,49 @@
+<h1>Test</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+ @include("home.css")
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+   @include("home.header")
+    <!-- end header section -->
+    <!-- slider section -->
+
+
+    <!-- end slider section -->
+  <!-- end hero area -->
+
+  <!-- shop section -->
+
+
+  <!-- end shop section -->
+
+  <!-- contact section -->
+
+
+  <!-- end contact section -->
+
+
+
+  <!-- info section -->
+
+    <!-- footer section -->
+
+    <!-- footer section -->
+
+
+  <!-- end info section -->
+
+
+
+
+
+
+
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -62,3 +108,9 @@
         </div>
     </form>
 </x-guest-layout>
+</div>
+<script src="{{asset("js/bootstrap.js")}}"></script>
+  <script src="{{asset("js/jquery-3.4.1.min.js")}}"></script>
+</body>
+
+</html>

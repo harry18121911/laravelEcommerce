@@ -1,18 +1,16 @@
 <header class="header_section">
-    <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
-            <span>
+    <nav>
+        <a class="underline text-red-600 hover:text-blue-800 visited:text-purple-600" href="/">
                 Giftos
-            </span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                    <a class="nav-link" href={{url("/")}}>Home <span class="sr-only">(current)</span></a>
+
+        <div class="">
+            <ul class="">
+                <li class="">
+                    <a class="text-red-500" href="shop.html">
+                        <p class="">Home</p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shop.html">
