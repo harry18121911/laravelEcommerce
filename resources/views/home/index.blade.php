@@ -2,12 +2,12 @@
 <html>
 
 <head>
- @include("home.css")
-</head>
 @vite('resources/css/app.css')
+
+</head>
 <body>
 
-  <div class="hero_area">
+  <div class=" container mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto rounded-3xl">
     <!-- header section strats -->
    @include("home.header")
     <!-- end header section -->
@@ -44,12 +44,6 @@
 
   <!-- end info section -->
 
-
-  <script src="{{asset("js/bootstrap.js")}}"></script>
-  <script src="{{asset("js/jquery-3.4.1.min.js")}}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/owlcarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <script src="{{asset("js/custom.js")}}"></script>
 
 </body>
 

@@ -1,18 +1,20 @@
 <header class="header_section">
-    <nav>
-        <a class="underline text-red-600 hover:text-blue-800 visited:text-purple-600" href="/">
-                Giftos
-        </a>
 
 
-        <div class="">
-            <ul class="">
+        <p class="text-8xl text-blue-600 text-center">Giftos</p>
+
+    <nav class="">
+
+
+        <div class="bg-sky-300 text-xl flex justify-center space-x-9 rounded-t-3xl items-center">
+            <ul class="flex space-x-10 items-center">
                 <li class="">
                     <a class="text-red-500" href="shop.html">
                         <p class="">Home</p>
                     </a>
                 </li>
-                <li class="nav-item">
+
+               <li class="nav-item">
                     <a class="nav-link" href="shop.html">
                         Shop
                     </a>
@@ -31,7 +33,7 @@
                     <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
             </ul>
-            <div class="user_option">
+            <div class="text-xl flex space-x-9 items-center">
 
                 @if(Route::has("login"))
 
@@ -50,7 +52,7 @@
                 </form>
 
                 @else
-
+                <div class="text-2xl items-center">
                 <a href="{{url("/login")}}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span>
@@ -64,7 +66,9 @@
                         Register
                     </span>
                 </a>
-                @endauth
+
+                </div>
+               @endauth
 
                 @endif
 

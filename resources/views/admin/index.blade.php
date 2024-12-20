@@ -4,7 +4,6 @@
     @include("admin.css")
   </head>
   <body>
-    <script src="https://cdn.tailwindcss.com"></script>
     @include("admin.header")
 
     <div class="d-flex align-items-stretch">
