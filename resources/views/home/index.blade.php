@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <div class=" container mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto rounded-3xl">
+  <div class=" mx-2 rounded-3xl">
     <!-- header section strats -->
    @include("home.header")
     <!-- end header section -->
@@ -35,7 +35,6 @@
 
   <!-- info section -->
 
-@include("home.info")
     <!-- footer section -->
 
 @include("home.footer")

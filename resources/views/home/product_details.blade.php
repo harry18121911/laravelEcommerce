@@ -2,18 +2,11 @@
 <html>
 
 <head>
-    @include('home.css')
+    @vite('resources/css/app.css')
     <style type="text/css">
-        .div_center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
 
-        .detail-box {
-            padding: 15px;
-        }
+
+
     </style>
 </head>
 
@@ -23,21 +16,21 @@
 
     </div>
     <section class="shop_section layout_padding">
-        <div class="container">
-            <div class="heading_container heading_center">
+        <div class="">
+            <div class="text-center text-3xl p-8 ">
                 <h2>
-                    Latest Products
+                    Product Details
                 </h2>
             </div>
-            <div class="row">
+            <div class="">
 
-                <div class=" col-md-10">
-                    <div class="box">
+                <div class="col-auto text-3xl">
+                    <div class="mx-auto container bg-red-100">
                         <a href="">
-                            <div class="div_center">
+                            <div class="flex justify-center items-center p-8">
                                 <img width="400px" src="/products/{{ $product->image }}" alt="">
                             </div>
-                            <div class="detail-box">
+                            <div class="p-4 flex justify-between " >
                                 <h6>
                                     {{ $product->title }}
                                 </h6>
@@ -48,7 +41,7 @@
                                     </span>
                                 </h6>
                             </div>
-                            <div class="detail-box">
+                            <div class="p-4 flex justify-between">
                                 <h6>
                                     Category: {{ $product->category }}
                                 </h6>
@@ -60,7 +53,7 @@
                                 </h6>
                             </div>
 
-                            <div class="detail-box">
+                            <div class="p-4">
                                 <p>{{ $product->description}}</p>
                             </div>
 
@@ -70,22 +63,17 @@
 
 
             </div>
-            <div class="btn-box">
-                <a href={{url("/")}}>
+            <div class="text-center text-3xl p-28">
+                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href={{url("/")}}>
                     View All Products
                 </a>
             </div>
         </div>
     </section>
 
-    @include('home.info')
+ @include("home.footer")
 
 
-
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owlcarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
 
 </body>
 

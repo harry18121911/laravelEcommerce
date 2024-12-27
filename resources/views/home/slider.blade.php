@@ -4,23 +4,15 @@
         <div class="">
           <div class="">
             <div class="">
-              <div class="container flex bg-slate-400 rounded-b-3xl ">
-                <div class="">
-                  <div class="">
-                    <h1 class="text-5xl">
-                      Welcome To Our <br>
-                      Gift Shop
-                    </h1>
+              <div class="h-80  bg-cover bg-center  rounded-b-3xl text-5xl text-white text-center " style="background-image: url('images/image3.jpeg');">
 
-                    <a href="">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-                <div class=" ">
-                  <div class="">
-                    <img style="width:600px" src="images/image3.jpeg" alt="" />
-                  </div>
+                <div class="">
+                <h1 style="position: relative; top: 200px;">
+                    Welcome To Our <br>
+                    Gift Shop
+                  </h1>
+
+
                 </div>
               </div>
             </div>

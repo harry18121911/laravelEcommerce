@@ -1,8 +1,3 @@
-<footer class=" footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayyear"></span> all rights reserved by
-        <a href="https://html.design/">web tech knowledge</a>
-      </p>
-    </div>
+<footer class="bg-sky-300 text-center rounded-3xl mx-3 mt-auto">
+    <h1 class="text-black text-2xl p-6">All Rights Reserved</h1>
 </footer>
