@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/",[HomeController::class,"home"]);
+Route::get("/shop",[HomeController::class,"shop"]);
+Route::get("/whyus",[HomeController::class,"whyus"]);
 
 
 Route::get('/dashboard',[HomeController::class,"login_home"])->middleware(['auth', 'verified'])->name('dashboard');

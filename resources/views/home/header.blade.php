@@ -9,18 +9,18 @@
         <div class="bg-sky-300 text-xl flex justify-center space-x-9 rounded-t-3xl items-center">
             <ul class="flex space-x-10 items-center">
                 <li class="">
-                    <a class="text-red-500" href="shop.html">
+                    <a class="text-red-500" href="{{url("/")}}">
                         <p class="">Home</p>
                     </a>
                 </li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="shop.html">
+                    <a class="nav-link" href="{{url("/shop")}}">
                         Shop
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="why.html">
+                    <a class="nav-link" href="{{url("/whyus")}}">
                         Why Us
                     </a>
                 </li>

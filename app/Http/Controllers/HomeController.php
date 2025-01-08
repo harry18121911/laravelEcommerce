@@ -164,4 +164,36 @@ class HomeController extends Controller
 
         return view("home.orders",compact("count","cart","order"));
     }
+
+    public function shop(){
+        $product = Product::all();
+
+        if (Auth::id()) {
+            $user = Auth::user();
+
+            $userid = $user->id;
+
+            $count = Cart::where("user_id", $userid)->count();
+        } else {
+            $count = "";
+        }
+
+        return view("home.shopHeader", compact("product", "count"));
+    }
+
+    public function whyus(){
+        $product = Product::all();
+
+        if (Auth::id()) {
+            $user = Auth::user();
+
+            $userid = $user->id;
+
+            $count = Cart::where("user_id", $userid)->count();
+        } else {
+            $count = "";
+        }
+
+        return view("home.whyus", compact("product", "count"));
+    }
 }
