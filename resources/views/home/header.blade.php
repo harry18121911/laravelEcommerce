@@ -25,12 +25,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="testimonial.html">
+                    <a class="nav-link" href="{{url("/testimonials")}}">
                         Testimonial
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="{{url("/contactus")}}">Contact Us</a>
                 </li>
             </ul>
             <div class="text-xl flex space-x-9 items-center">

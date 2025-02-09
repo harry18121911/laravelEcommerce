@@ -2,46 +2,10 @@
 <html>
 
 <head>
-    @include('admin.css')
-
-    <style type="text/css">
-        input[type="text"] {
-            width: 400px;
-            height: 70px;
-        }
-
-        .div_deg {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px;
-        }
-
-        .table_deg {
-            text-align: center;
-            margin: auto;
-            border: 2px solid yellowgreen;
-            margin-top: 50px;
-            width: 600px;
-        }
-
-        th {
-            background-color: skyblue;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-        }
-
-        td {
-            color: white;
-            padding: 10px;
-            border: 1px solid;
-        }
-    </style>
+    @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="bg-slate-900 text-gray-300">
     @include('admin.header')
 
     <div class="d-flex align-items-stretch">
@@ -52,38 +16,45 @@
             <div class="page-header">
                 <div class="container-fluid">
                 </div>
-                <h1 style="color: white">Add Category</h1>
-                <div class="div_deg">
 
+                <div class="flex justify-center items-center m-8">
+                    <h1 class="text-2xl mr-8">Add Category</h1>
                     <form action="{{ url('add_category') }}" method="post">
                         @csrf
                         <div>
-                            <input type="text" name="category">
-                            <input class="btn btn-primary" type="submit" value="Add Category">
+                            <input class="w-96 h-24" type="text" name="category">
+                            <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl"
+                                type="submit" value="Add Category">
                         </div>
                     </form>
 
                 </div>
 
                 <div>
-                    <table class="table_deg">
+                    <table class="text-center m-auto border-2 border-yellow-300 mt-12 w-[600px]">
                         <tr>
-                            <th>Category Name</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Category Name</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Edit</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Delete</th>
                         </tr>
 
                         @foreach ($category as $category)
                             <tr>
-                                <td>{{$category->category_name}}</td>
-                                <form id="formUpdate" action="{{url("edit_category",$category->id)}}" method="GET">
+                                <td class="text-white p-3 border-solid border">{{ $category->category_name }}</td>
+                                <form id="formUpdate" action="{{ url('edit_category', $category->id) }}" method="GET">
                                     @csrf
-                                <td><button type="submit"  class="btn btn-success" >Edit</button></td>
+                                    <td class="text-white p-3 border-solid border"><button type="submit"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl">Edit</button>
+                                    </td>
                                 </form>
-                                <form id="formDelete" action="{{url("delete_category",$category->id)}}" method="POST">
+                                <form id="formDelete" action="{{ url('delete_category', $category->id) }}"
+                                    method="POST">
                                     @csrf
-                                    @method("DELETE")
-                                <td><button type="submit" href="{{url("delete_category",$category->id)}}" class="btn btn-danger" onclick="confirmation(event)">Delete</button></td>
+                                    @method('DELETE')
+                                    <td class="text-white p-3 border-solid border"><button type="submit"
+                                            href="{{ url('delete_category', $category->id) }}"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-2xl"
+                                            onclick="confirmation(event)">Delete</button></td>
                                 </form>
 
                             </tr>
@@ -94,38 +65,29 @@
                 <!-- JavaScript files-->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
-                    function confirmation(ev){
+                    function confirmation(ev) {
                         ev.preventDefault();
                         Swal.fire({
-                            title:"Are you sure to delete this",
+                            title: "Are you sure to delete this",
                             text: "This delete will be permanent",
                             icon: "warning",
                             showCloseButton: true,
                             showCancelButton: true,
                             focusConfirm: false,
-                        }).then((result)=>{
-                             if(result.isConfirmed){
-                                let form =document.getElementById("formDelete");
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let form = document.getElementById("formDelete");
                                 form.submit();
                                 Swal.fire("Category Deleted");
-                             }else if(result.isDenied){
+                            } else if (result.isDenied) {
 
                                 Swal.fire("Changes are not saved");
-                             }
+                            }
 
                         })
                     }
-
-
                 </script>
-                <script src="{{ asset('/admincss/vendor/jquery/jquery.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/popper.js/umd/popper.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/chart.js/Chart.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
-                <script src="{{ asset('/admincss/js/charts-home.js') }}"></script>
-                <script src="{{ asset('/admincss/js/front.js') }}"></script>
+
 </body>
 
 </html>

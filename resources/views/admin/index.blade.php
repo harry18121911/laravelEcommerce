@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    @include("admin.css")
+    @vite('resources/css/app.css')
   </head>
-  <body>
+  <body class="bg-slate-900 text-gray-300">
     @include("admin.header")
 
-    <div class="d-flex align-items-stretch">
-      <!-- Sidebar Navigation-->
+    <div class="flex">
     @include("admin.sidebar")
-      <!-- Sidebar Navigation end-->
 
     @include("admin.body")
     </div>
-    <!-- JavaScript files-->
-
   </body>
 </html>

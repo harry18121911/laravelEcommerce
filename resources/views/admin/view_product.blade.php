@@ -2,77 +2,10 @@
 <html>
 
 <head>
-    @include('admin.css')
-
-    <style type="text/css">
-        input[type="text"] {
-            width: 400px;
-            height: 70px;
-        }
-
-        .div_deg {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px;
-        }
-
-        .table_deg {
-            text-align: center;
-            margin: auto;
-            border: 2px solid yellowgreen;
-            margin-top: 50px;
-            width: 600px;
-        }
-
-        h1 {
-            color: white;
-        }
-
-        label {
-            display: inline-block;
-            width: 250px;
-            font-size: 18px !important;
-            color: white !important;
-        }
-
-        th {
-            background-color: skyblue;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-        }
-
-        td {
-            color: white;
-            padding: 10px;
-            border: 1px solid;
-        }
-
-        input[type="text"] {
-            width: 350px;
-            height: 50px;
-        }
-
-        input[type="search"]{
-            width: 500px;
-            height: 60px;
-            margin-left: 50px;
-        }
-
-        textarea {
-            width: 450px;
-            height: 80px;
-        }
-
-        .input_deg {
-            padding: 15px;
-        }
-    </style>
+    @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="bg-slate-900 text-gray-300">
     @include('admin.header')
 
     <div class="d-flex align-items-stretch">
@@ -84,46 +17,52 @@
                 <div class="container-fluid">
                 </div>
 
-                    <form action="{{url("product_search")}}" method="get">
-                        <input type="search" name="search">
-                        <input type="submit" name="btn btn-secondary" value="Search">
-                    </form>
-                <div class="div_deg">
-                    <table class="table_deg">
+                <form action="{{ url('product_search') }}" method="get">
+                    <input class="w-[500px] h-14 m-8 " type="search" name="search">
+                    <input class="text-2xl" type="submit" value="Search">
+                </form>
+
+
+
+                <div class="flex justify-center items-center m-8">
+                    <table class="text-center m-auto border-2 border-yellow-300 mt-12 w-[600px]">
                         <tr>
-                            <th>Product Title</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>Image</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Product Title</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Description</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Category</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Image</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Price</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Quantity</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Edit</th>
+                            <th class="bg-sky-300 p-4 text-xl font-bold text-white">Delete</th>
                         </tr>
 
                         @foreach ($product as $products)
                             <tr>
-                                <td>{{ $products->title }}</td>
-                                <td>{{ $products->description }}</td>
-                                <td>{{ $products->category }}</td>
-                                <td> <img height="120" width="120" src="products/{{ $products->image }}"> </td>
-                                <td>{{ "$" . $products->price }}</td>
-                                <td>{{ $products->quantity }}</td>
+                                <td class="text-white p-3 border-solid border">{{ $products->title }}</td>
+                                <td class="text-white p-3 border-solid border">{{ $products->description }}</td>
+                                <td class="text-white p-3 border-solid border">{{ $products->category }}</td>
+                                <td class="text-white p-3 border-solid border"> <img height="120" width="120"
+                                        src="products/{{ $products->image }}"> </td>
+                                <td class="text-white p-3 border-solid border">{{ "$" . $products->price }}</td>
+                                <td class="text-white p-3 border-solid border">{{ $products->quantity }}</td>
 
-                                <td>
+                                <td class="text-white p-3 border-solid border">
                                     <form id="formUpdate" action="{{ url('edit_product', $products->id) }}"
                                         method="GET">
                                         @csrf
-                                        <button type="submit" href="" class="btn btn-secondary">Edit</button>
+                                        <button type="submit" href=""
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl">Edit</button>
                                     </form>
                                 </td>
 
-                                <td>
+                                <td class="text-white p-3 border-solid border">
                                     <form id="formDelete" action="{{ url('delete_product', $products->id) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" href="" class="btn btn-danger"
+                                        <button type="submit" href=""
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-2xl"
                                             onclick="confirmation(event)">Delete</button>
                                     </form>
                                 </td>
@@ -131,50 +70,9 @@
                         @endforeach
 
                     </table>
-
-
                 </div>
                 {{ $product->links() }}
-                {{--  <h1 style="color: white">Add Category</h1>
-                <div class="div_deg">
 
-                    <form action="{{ url('add_category') }}" method="post">
-                        @csrf
-                        <div>
-                            <input type="text" name="category">
-                            <input class="btn btn-primary" type="submit" value="Add Category">
-                        </div>
-                    </form>
-
-                </div> --}}
-
-                {{-- <div>
-                    <table class="table_deg">
-                        <tr>
-                            <th>Category Name</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-
-                        @foreach ($category as $category)
-                            <tr>
-                                <td>{{$category->category_name}}</td>
-                                <form id="formUpdate" action="{{url("edit_category",$category->id)}}" method="GET">
-                                    @csrf
-                                <td><button type="submit"  class="btn btn-success" >Edit</button></td>
-                                </form>
-                                <form id="formDelete" action="{{url("delete_category",$category->id)}}" method="POST">
-                                    @csrf
-                                    @method("DELETE")
-                                <td><button type="submit" href="{{url("delete_category",$category->id)}}" class="btn btn-danger" onclick="confirmation(event)">Delete</button></td>
-                                </form>
-
-                            </tr>
-                        @endforeach
-
-                    </table>
-                </div> --}}
-                <!-- JavaScript files-->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
                     function confirmation(ev) {
@@ -198,14 +96,7 @@
                         })
                     }
                 </script>
-                <script src="{{ asset('/admincss/vendor/jquery/jquery.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/popper.js/umd/popper.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/chart.js/Chart.min.js') }}"></script>
-                <script src="{{ asset('/admincss/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
-                <script src="{{ asset('/admincss/js/charts-home.js') }}"></script>
-                <script src="{{ asset('/admincss/js/front.js') }}"></script>
+
 </body>
 
 </html>

@@ -26,9 +26,9 @@
                             </h6>
                         </div>
                         <div style="padding:15px">
-                            <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded2" href="{{url("product_details",$products->id)}}">Details</a>
+                            <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl" href="{{url("product_details",$products->id)}}">Details</a>
 
-                            <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded2" href="{{url("add_cart",$products->id)}}"> Add to Cart</a>
+                            <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-2xl" href="{{url("add_cart",$products->id)}}"> Add to Cart</a>
                         </div>
                     </a>
                 </div>
